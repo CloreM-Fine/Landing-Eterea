@@ -1,0 +1,4 @@
+AddType video/mp4 .mp4
+<FilesMatch "\.(mp4)$">
+  Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>

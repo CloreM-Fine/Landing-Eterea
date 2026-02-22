@@ -258,13 +258,15 @@ function App() {
     }
   };
 
-  // Versione mobile
-  if (isMobile) {
-    return <MobileLayout onNavigate={navigateToFullscreen} />;
-  }
-
   return (
-    <div className="relative w-full min-h-screen" style={{ WebkitOverflowScrolling: 'touch' }}>
+    <>
+      {/* Versione Mobile - visibile solo su schermi piccoli */}
+      <div className="lg:hidden">
+        <MobileLayout onNavigate={navigateToFullscreen} />
+      </div>
+      
+      {/* Versione Desktop - visibile solo su schermi grandi */}
+      <div className="hidden lg:block relative w-full min-h-screen" style={{ WebkitOverflowScrolling: 'touch' }}>
       {/* Background */}
       {bgVideo ? (
         <video
@@ -428,6 +430,7 @@ function App() {
         noteContent={content}
       />
     </div>
+    </>
   );
 }
 
