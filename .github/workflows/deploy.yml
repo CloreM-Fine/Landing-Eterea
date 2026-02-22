@@ -35,10 +35,5 @@ jobs:
         server-dir: ./
         # Carica SOLO la cartella dist (i file compilati), non i sorgenti
         local-dir: ./dist/
-        # Forza upload di tutti i file (anche se sembrano uguali)
-        dangerous-clean-slate: false
-        # Non escludere file (carica tutto inclusi i video)
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
+        # Pulisce TUTTO sul server prima di caricare i nuovi file
+        dangerous-clean-slate: true
