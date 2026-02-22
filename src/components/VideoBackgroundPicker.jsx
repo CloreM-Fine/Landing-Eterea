@@ -6,22 +6,22 @@ const VIDEOS = [
   {
     id: 1,
     // London Streets - Pexels
-    url: 'public/videos/1.mp4',
+    url: '/videos/1.mp4',
   },
   {
     id: 2,
     // Big Ben / Parliament - Pexels
-    url: 'public/videos/2.mp4',
+    url: '/videos/2.mp4',
   },
   {
     id: 3,
     // British Countryside - Pexels
-    url: 'public/videos/3.mp4',
+    url: '/videos/3.mp4',
   },
   {
     id: 4,
     // City / Night - Pexels
-    url: 'public/videos/4.mp4',
+    url: '/videos/4.mp4',
   }
 ];
 

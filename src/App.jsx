@@ -1,6 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TopBar } from './components/TopBar';
+import { MobileLayout } from './components/MobileLayout';
+
+// Hook per rilevare se è mobile
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  return isMobile;
+}
 
 // Componente pagina fullscreen con effetto espansione laterale
 function FullscreenPage({ fullscreenPage, renderFullscreenPage }) {
@@ -71,6 +88,7 @@ import { useTheme } from './hooks/useTheme';
 import { useNote } from './hooks/useNote';
 
 function App() {
+  const isMobile = useIsMobile();
   const { bgColor, bgImage, bgVideo, previewImage, isLight, changeColor, changeImage, changeVideo, colors, isFinderLight, isImageBackground, isVideoBackground } = useTheme();
   const { content, title, updateContent, updateTitle, saveNote } = useNote();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -239,6 +257,11 @@ function App() {
         return null;
     }
   };
+
+  // Versione mobile
+  if (isMobile) {
+    return <MobileLayout onNavigate={navigateToFullscreen} />;
+  }
 
   return (
     <div className="relative w-full min-h-screen" style={{ WebkitOverflowScrolling: 'touch' }}>

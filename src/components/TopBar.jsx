@@ -117,7 +117,7 @@ export function TopBar({
               </AnimatePresence>
             </motion.button>
 
-            {/* Pulsanti che escono dal cerchio */}
+            {/* Pulsanti che escono dal cerchio - EQUIDISTANTI */}
             <AnimatePresence>
               {menuOpen && (
                 <>
@@ -131,7 +131,7 @@ export function TopBar({
                       }}
                       animate={{ 
                         opacity: 1, 
-                        x: 12 + (index * 28),
+                        x: 100 + (index * 100),
                         scale: 1
                       }}
                       exit={{ 
@@ -146,7 +146,7 @@ export function TopBar({
                       }}
                       onClick={() => handleNavClick(item.id)}
                       className={`
-                        absolute top-0 left-full whitespace-nowrap
+                        absolute top-0 left-0 whitespace-nowrap
                         px-4 py-2 rounded-full border text-xs font-black uppercase tracking-wider
                         transition-colors duration-200
                         ${isLight
@@ -158,7 +158,6 @@ export function TopBar({
                             : 'bg-black text-white border-white hover:bg-white hover:text-black'
                         }
                       `}
-                      style={{ marginLeft: `${12 + (index * 88)}px` }}
                     >
                       {item.label}
                     </motion.button>

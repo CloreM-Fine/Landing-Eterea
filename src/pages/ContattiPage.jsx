@@ -11,37 +11,24 @@ const COLORS = {
 
 export function ContattiPage() {
   return (
-    <div className="bg-white text-black min-h-screen">
-      {/* HERO - Colorato */}
+    <div className="min-h-screen" style={{ backgroundColor: '#fafafa' }}>
+      {/* HERO */}
       <section 
         className="min-h-[70vh] relative overflow-hidden"
         style={{ background: `linear-gradient(135deg, ${COLORS.teal}20, ${COLORS.coral}20)` }}
       >
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden md:block">
-          <div className="text-xs font-mono tracking-widest uppercase opacity-50" style={{ writingMode: 'vertical-rl' }}>
-            Get in Touch — Lucca
-          </div>
-        </div>
-        
-        {/* Forme decorative */}
         <motion.div 
           animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
           transition={{ duration: 8, repeat: Infinity }}
           className="absolute top-20 left-20 w-24 h-24 rounded-2xl opacity-30"
           style={{ backgroundColor: COLORS.yellow }}
         />
-        <motion.div 
-          animate={{ y: [0, 30, 0] }}
-          transition={{ duration: 3, repeat: Infinity }}
-          className="absolute bottom-20 right-40 w-16 h-16 rounded-full opacity-40"
-          style={{ backgroundColor: COLORS.coral }}
-        />
         
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
           <div className="flex flex-col justify-center p-8 md:p-16">
             <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
               <span 
-                className="text-xs font-bold tracking-widest uppercase px-3 py-1 inline-block mb-6 text-white"
+                className="text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full inline-block mb-6 text-white"
                 style={{ backgroundColor: COLORS.purple }}
               >
                 Contatti
@@ -50,8 +37,7 @@ export function ContattiPage() {
                 Parliamo del <span style={{ color: COLORS.coral }}>tuo progetto</span>
               </h1>
               <p className="text-base mt-6 max-w-md leading-relaxed text-gray-600">
-                Siamo sempre interessati a nuove sfide. Siamo a Lucca ma lavoriamo 
-                con clienti ovunque. Scrivici, rispondiamo velocemente.
+                Sempre interessati a nuove sfide. Siamo a Lucca ma lavoriamo ovunque.
               </p>
             </motion.div>
           </div>
@@ -61,26 +47,17 @@ export function ContattiPage() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="relative"
+              className="w-48 h-48 md:w-64 md:h-64 rounded-full flex items-center justify-center"
+              style={{ background: `linear-gradient(135deg, ${COLORS.coral}, ${COLORS.purple})` }}
             >
-              <div 
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center"
-                style={{ background: `linear-gradient(135deg, ${COLORS.coral}, ${COLORS.purple})` }}
-              >
-                <Mail size={80} className="text-white" />
-              </div>
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                className="absolute inset-0 border-4 border-dashed border-black/20 rounded-full"
-              />
+              <Mail size={64} className="text-white" />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CONTACT INFO - Card colorate */}
-      <section className="grid grid-cols-1 md:grid-cols-3 border-b-2 border-black">
+      {/* CONTACT INFO */}
+      <section className="grid grid-cols-1 md:grid-cols-3 border-b-2 border-gray-200">
         {[
           { 
             icon: Mail, 
@@ -100,7 +77,7 @@ export function ContattiPage() {
             icon: MapPin, 
             label: 'Dove siamo', 
             value: 'Lucca, Toscana',
-            subtext: 'Lavoriamo in remoto 🌍',
+            subtext: 'Lavoriamo in remoto',
             color: COLORS.yellow,
             darkText: true
           },
@@ -112,7 +89,7 @@ export function ContattiPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
             whileHover={{ y: -5 }}
-            className={`p-8 md:p-12 ${i < 2 ? 'border-r-2 border-black' : ''} transition-all`}
+            className={`p-8 md:p-12 ${i < 2 ? 'border-r-2 border-gray-200' : ''} transition-all`}
             style={{ backgroundColor: item.color, color: item.darkText ? '#000' : '#fff' }}
           >
             <item.icon size={32} className="mb-4 opacity-80" />
@@ -129,7 +106,7 @@ export function ContattiPage() {
 
       {/* FORM + SOCIAL */}
       <section className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="p-8 md:p-16 border-r-2 border-black">
+        <div className="p-8 md:p-16 border-r-2 border-gray-200">
           <h2 className="text-3xl font-black uppercase mb-2">Scrivici</h2>
           <p className="text-gray-500 text-sm mb-8">Rispondiamo entro 24 ore</p>
           
@@ -184,9 +161,9 @@ export function ContattiPage() {
             <h3 className="text-xl font-black uppercase mb-6">Social</h3>
             <div className="space-y-4">
               {[
-                { icon: Instagram, name: 'Instagram', handle: '@etereastudio' },
-                { icon: Linkedin, name: 'LinkedIn', handle: 'Eterea Studio' },
-                { icon: Github, name: 'GitHub', handle: 'etereastudio' },
+                { icon: Instagram, name: 'Instagram', handle: '@etereastudio', color: COLORS.coral },
+                { icon: Linkedin, name: 'LinkedIn', handle: 'Eterea Studio', color: COLORS.teal },
+                { icon: Github, name: 'GitHub', handle: 'etereastudio', color: COLORS.purple },
               ].map((social, i) => (
                 <motion.a
                   key={social.name}
@@ -196,7 +173,7 @@ export function ContattiPage() {
                 >
                   <div 
                     className="w-12 h-12 rounded-full flex items-center justify-center text-white"
-                    style={{ backgroundColor: [COLORS.coral, COLORS.teal, COLORS.purple][i] }}
+                    style={{ backgroundColor: social.color }}
                   >
                     <social.icon size={20} />
                   </div>
@@ -207,14 +184,6 @@ export function ContattiPage() {
                 </motion.a>
               ))}
             </div>
-          </div>
-          
-          <div className="mt-12 p-6 rounded-2xl bg-black text-white">
-            <p className="text-sm leading-relaxed">
-              <span className="font-bold" style={{ color: COLORS.teal }}>Nota:</span> Non abbiamo una sede fisica. 
-              Lavoriamo in remoto, ma siamo sempre disponibili per chiamate video 
-              o un caffè a Lucca se passi di qui ☕️
-            </p>
           </div>
         </div>
       </section>
