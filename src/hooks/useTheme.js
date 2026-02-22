@@ -106,6 +106,9 @@ export function useTheme() {
     notePlaceholder: `${primaryColor}60`,
   };
   
+  // Finder mode: sempre light (beige) per coerenza con il tema
+  const isFinderLight = true;
+  
   return {
     bgColor,
     bgImage,
