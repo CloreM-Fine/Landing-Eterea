@@ -12,25 +12,25 @@ const COLORS = {
 const PORTFOLIO_ITEMS = [
   {
     id: 1,
-    title: 'Colombini Lelio',
-    client: 'Colombini Lelio',
-    category: 'Sito Web',
-    year: '2024',
-    description: 'Sito web vetrina per azienda locale di Lucca. Design pulito che valorizza i prodotti.',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop',
-    link: 'https://colombinilelio.it',
-    color: COLORS.coral,
-  },
-  {
-    id: 2,
     title: 'Danda Wine Bar',
     client: 'Danda Wine Bar',
     category: 'Sito Web',
     year: '2024',
     description: 'Sito web per wine bar di Lucca. Atmosfera elegante e galleria fotografica.',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&h=800&fit=crop',
+    image: '/work/danda.png',
     link: 'https://dandawinebar.it',
     color: COLORS.teal,
+  },
+  {
+    id: 2,
+    title: 'Colombini Lelio',
+    client: 'Colombini Lelio',
+    category: 'Sito Web',
+    year: '2024',
+    description: 'Sito web vetrina per azienda locale di Lucca. Design pulito che valorizza i prodotti.',
+    image: '/work/colombini.png',
+    link: 'https://colombinilelio.it',
+    color: COLORS.coral,
   },
   {
     id: 3,
@@ -39,32 +39,56 @@ const PORTFOLIO_ITEMS = [
     category: 'Sito Web',
     year: '2024',
     description: 'Sito web aziendale con focus su benessere. Design moderno e SEO ottimizzata.',
-    image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1200&h=800&fit=crop',
+    image: '/work/welln.png',
     link: 'https://welln.it',
     color: COLORS.purple,
   },
   {
     id: 4,
-    title: 'Gestionale Progetti',
-    client: 'Cliente Privato',
-    category: 'Web App',
+    title: 'Nelle Tue Mani',
+    client: 'Progetto in Corso',
+    category: 'Sito Web',
     year: '2024',
-    description: 'Applicazione web per gestione progetti. Dashboard e tracciamento task.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
+    description: 'Progetto in fase di sviluppo per nuovo cliente. Design in arrivo.',
+    image: '/work/nelletuemani.png',
     link: '#',
     color: COLORS.yellow,
     private: true,
   },
   {
     id: 5,
-    title: 'Gestionale CRM',
-    client: 'Cliente Privato',
+    title: 'Gestionale Eterea',
+    client: 'Eterea Studio',
     category: 'Web App',
     year: '2024',
-    description: 'Sistema CRM su misura per gestione clienti. Interfaccia semplice.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',
+    description: 'Sistema interno per gestione progetti e clienti. Dashboard completa.',
+    image: '/work/gestionale-interno-eterea.png',
     link: '#',
     color: COLORS.coral,
+    private: true,
+  },
+  {
+    id: 6,
+    title: 'Gestionale Welln',
+    client: 'Welln',
+    category: 'Web App',
+    year: '2024',
+    description: 'Gestionale su misura per gestione task e progetti interni.',
+    image: '/work/welln-task.png',
+    link: '#',
+    color: COLORS.purple,
+    private: true,
+  },
+  {
+    id: 7,
+    title: 'Gestionale Colombini',
+    client: 'Colombini Lelio',
+    category: 'Web App',
+    year: '2024',
+    description: 'Sistema interno per gestione ordini e clienti.',
+    image: '/work/gestionale-colombini.png',
+    link: '#',
+    color: COLORS.teal,
     private: true,
   },
 ];
@@ -80,7 +104,7 @@ const PortfolioItem = ({ item, index }) => (
     <a href={item.link} target="_blank" rel="noopener noreferrer" className="block">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
         <div className="lg:col-span-7 relative overflow-hidden">
-          <div className="aspect-[16/9] overflow-hidden">
+          <div className="aspect-[16/9] overflow-hidden bg-gray-100">
             <motion.img
               src={item.image}
               alt={item.title}
@@ -144,8 +168,8 @@ export function WorkPage() {
             I Nostri <span style={{ color: COLORS.coral }}>Lavori</span>
           </h1>
           <p className="max-w-xl text-base md:text-lg leading-relaxed text-gray-600">
-            Una selezione dei progetti che hanno dato vita a Eterea. 
-            Siti web e gestionali fatti con cura per clienti reali.
+            Una selezione dei progetti realizzati per i nostri clienti. 
+            Siti web e web app sviluppati con cura e attenzione ai dettagli.
           </p>
         </motion.div>
         

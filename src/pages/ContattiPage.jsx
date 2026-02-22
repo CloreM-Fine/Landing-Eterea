@@ -77,7 +77,6 @@ export function ContattiPage() {
             icon: MapPin, 
             label: 'Dove siamo', 
             value: 'Lucca, Toscana',
-            subtext: 'Lavoriamo in remoto',
             color: COLORS.yellow,
             darkText: true
           },
