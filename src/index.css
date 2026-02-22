@@ -10,8 +10,25 @@
 
 html, body, #root {
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Desktop only: prevent body scroll, windows handle their own */
+@media (min-width: 1024px) {
+  html, body, #root {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+/* Mobile: allow natural scrolling */
+@media (max-width: 1023px) {
+  html, body, #root {
+    height: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 body {

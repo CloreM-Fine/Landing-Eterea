@@ -440,7 +440,7 @@ export function MobileLayout({ onNavigate }) {
   };
 
   return (
-    <div className="min-h-screen overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
+    <div className="min-h-screen" style={{ touchAction: 'pan-y' }}>
       <AnimatePresence mode="wait">
         {currentPage === 'home' && (
           <HomePage key="home" onNavigate={handleNavigate} />
