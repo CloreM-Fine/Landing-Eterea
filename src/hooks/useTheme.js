@@ -77,37 +77,30 @@ export function useTheme() {
     // La dark mode è gestita automaticamente da isLight
   }, []);
   
-  // Finder usa sempre i colori del tema: beige chiaro per sidebar, scuro per contenuto
-  const primaryColor = '#151e26';
-  const secondaryColor = '#f5f5dc';
+  // Finder va in modalità CHIARA quando lo sfondo è SCURO (e viceversa)
+  const isFinderLight = bgImage ? false : !isLight;
   
-  // Colors for adaptive UI - coerenti con il tema
+  // Colors for adaptive UI
   const colors = {
     logo: isLight ? '#151e26' : '#ffffff',
     email: isLight ? '#151e26' : '#ffffff',
     copyright: isLight ? 'rgba(21, 30, 38, 0.4)' : 'rgba(255, 255, 255, 0.4)',
-    // Sidebar: beige chiaro
-    sidebarBg: secondaryColor,
-    sidebarText: primaryColor,
-    sidebarHeader: `${primaryColor}99`, // 60% opacity
-    sidebarHover: `${primaryColor}10`, // 10% opacity
-    // Finder main: beige
-    finderBg: secondaryColor,
-    finderText: primaryColor,
-    finderHeaderBg: secondaryColor,
-    finderBorder: `${primaryColor}20`, // 20% opacity
-    folderLabel: primaryColor,
-    folderSubtext: `${primaryColor}80`, // 50% opacity
-    // Note: stessi colori
-    noteBg: secondaryColor,
-    noteText: primaryColor,
-    noteHeaderBg: secondaryColor,
-    noteBorder: `${primaryColor}20`,
-    notePlaceholder: `${primaryColor}60`,
+    sidebarBg: isFinderLight ? '#e8e8e8' : '#111827',
+    sidebarText: isFinderLight ? '#1e293b' : '#f3f4f6',
+    sidebarHeader: isFinderLight ? '#6b7280' : '#9ca3af',
+    sidebarHover: isFinderLight ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.1)',
+    finderBg: isFinderLight ? '#ffffff' : '#1f2937',
+    finderText: isFinderLight ? '#1e293b' : '#f3f4f6',
+    finderHeaderBg: isFinderLight ? '#f5f5f5' : '#111827',
+    finderBorder: isFinderLight ? '#e5e7eb' : '#374151',
+    folderLabel: isFinderLight ? '#000000' : '#ffffff',
+    folderSubtext: isFinderLight ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.5)',
+    noteBg: isFinderLight ? '#ffffff' : '#1f2937',
+    noteText: isFinderLight ? '#1e293b' : '#f3f4f6',
+    noteHeaderBg: isFinderLight ? '#f5f5f5' : '#111827',
+    noteBorder: isFinderLight ? '#e5e7eb' : '#374151',
+    notePlaceholder: isFinderLight ? '#9ca3af' : '#6b7280',
   };
-  
-  // Finder mode: sempre light (beige) per coerenza con il tema
-  const isFinderLight = true;
   
   return {
     bgColor,
