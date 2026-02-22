@@ -1,0 +1,14 @@
+export { EtereaPage } from './EtereaPage';
+export { ContattiPage } from './ContattiPage';
+export { ChiSiamoPage } from './ChiSiamoPage';
+export { AppPage } from './AppPage';
+export { GraficaPage } from './GraficaPage';
+export { Progettazione3DPage } from './Progettazione3DPage';
+export { ShootingPage } from './ShootingPage';
+export { SitiWebPage } from './SitiWebPage';
+export { SocialMediaPage } from './SocialMediaPage';
+export { VideoPage } from './VideoPage';
+export { GoogleMapsPage } from './GoogleMapsPage';
+export { GoogleSearchPage } from './GoogleSearchPage';
+export { ServiziPage } from './ServiziPage';
+export { WorkPage } from './WorkPage';
