@@ -31,7 +31,7 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        # Cartella di destinazione su SiteGround (public_html è la root del sito)
-        server-dir: public_html/
+        # Cartella di destinazione su SiteGround (./ = root dove l'FTP si connette)
+        server-dir: ./
         # Carica SOLO la cartella dist (i file compilati), non i sorgenti
         local-dir: ./dist/
