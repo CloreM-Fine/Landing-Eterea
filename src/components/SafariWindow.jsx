@@ -404,28 +404,28 @@ export function SafariWindow({
       <div 
         className="safari-header flex flex-col border-b"
         style={{ 
-          backgroundColor: isDark ? colors.finderHeaderBg : '#f5f5f7',
+          backgroundColor: colors.finderHeaderBg,
           borderColor: colors.finderBorder
         }}
       >
         {/* Toolbar principale */}
-        <div className="flex items-center justify-between px-3 py-2">
+        <div className="flex items-center justify-between px-4 py-3" style={{ height: '50px' }}>
           {/* Sinistra: Traffic lights e navigazione */}
           <div className="flex items-center gap-3 flex-1">
             {/* Traffic Lights */}
-            <div className="flex gap-1.5 select-none">
+            <div className="flex gap-2 select-none">
               <button 
                 onClick={handleClose}
-                className="w-3 h-3 rounded-full bg-[#ff5f57] hover:brightness-110 transition-all cursor-pointer border border-[#e0443e]/30"
+                className="traffic-light traffic-light-red hover:brightness-110 transition-all cursor-pointer"
                 title="Chiudi"
               />
-              <button 
-                className="w-3 h-3 rounded-full bg-[#febc2e] border border-[#d89e24]/30" 
-                title="Minimizza" 
+              <div 
+                className="traffic-light traffic-light-yellow"
+                title="Minimizza"
               />
               <button 
                 onClick={handleMaximize}
-                className="w-3 h-3 rounded-full bg-[#28c840] border border-[#1fa233]/30 hover:brightness-110 transition-all cursor-pointer" 
+                className="traffic-light traffic-light-green hover:brightness-110 transition-all cursor-pointer"
                 title="Massimizza"
               />
             </div>
@@ -630,7 +630,7 @@ export function SafariWindow({
           <div 
             className="w-52 border-r p-3 overflow-y-auto hidden md:block"
             style={{ 
-              backgroundColor: isDark ? colors.sidebarBg : '#f5f5f7',
+              backgroundColor: colors.sidebarBg,
               borderColor: colors.finderBorder
             }}
           >
@@ -638,7 +638,7 @@ export function SafariWindow({
             <div className="mb-4">
               <div 
                 className="flex items-center gap-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider mb-1"
-                style={{ color: isDark ? colors.sidebarHeader : '#71717a' }}
+                style={{ color: colors.sidebarHeader }}
               >
                 <span>Preferiti</span>
               </div>
@@ -653,7 +653,7 @@ export function SafariWindow({
             <div className="mb-4">
               <div 
                 className="flex items-center gap-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider mb-1"
-                style={{ color: isDark ? colors.sidebarHeader : '#71717a' }}
+                style={{ color: colors.sidebarHeader }}
               >
                 <span>Servizi</span>
               </div>
@@ -667,7 +667,7 @@ export function SafariWindow({
         {/* Main Content */}
         <div 
           className="flex-1 overflow-y-auto relative" 
-          style={{ backgroundColor: '#ffffff' }}
+          style={{ backgroundColor: colors.finderBg }}
           onClick={() => {
             setShowPrivacyInfo(false);
             setShowShareMenu(false);

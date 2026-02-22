@@ -1,11 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const COLORS = {
+  primary: '#151e26',
+  secondary: '#f5f5dc',
+  accent: '#ccff00',
+};
+
 export function ShootingPage() {
   return (
-    <div className="min-h-full bg-white">
+    <div className="min-h-full" style={{ backgroundColor: COLORS.secondary }}>
       {/* HERO */}
-      <div className="bg-black text-white p-8 md:p-16">
+      <div 
+        className="p-8 md:p-16 overflow-hidden"
+        style={{ backgroundColor: COLORS.primary }}
+      >
         <motion.div
           initial={{ x: -100 }}
           animate={{ x: 0 }}
@@ -16,7 +25,10 @@ export function ShootingPage() {
             transition={{ repeat: Infinity, duration: 15, ease: 'linear' }}
             className="flex whitespace-nowrap"
           >
-            <span className="text-6xl md:text-9xl font-black uppercase px-8">
+            <span 
+              className="text-6xl md:text-9xl font-black uppercase px-8"
+              style={{ color: COLORS.secondary }}
+            >
               SHOOTING • FOTOGRAFIA • VIDEO • SHOOTING • FOTOGRAFIA • VIDEO •
             </span>
           </motion.div>
@@ -28,11 +40,12 @@ export function ShootingPage() {
         <motion.div
           initial={{ y: 50 }}
           whileInView={{ y: 0 }}
-          className="bg-red-500 text-white p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4 border-black"
+          className="p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4"
+          style={{ backgroundColor: COLORS.accent, borderColor: COLORS.primary }}
         >
-          <h2 className="text-3xl md:text-5xl font-black uppercase">PRODOTTO</h2>
-          <p className="mt-4 text-lg font-bold">Fotografia professionale per i tuoi prodotti</p>
-          <ul className="mt-6 space-y-2 font-bold">
+          <h2 className="text-3xl md:text-5xl font-black uppercase" style={{ color: COLORS.primary }}>PRODOTTO</h2>
+          <p className="mt-4 text-lg font-bold" style={{ color: COLORS.primary }}>Fotografia professionale per i tuoi prodotti</p>
+          <ul className="mt-6 space-y-2 font-bold" style={{ color: COLORS.primary }}>
             <li>• E-commerce</li>
             <li>• Cataloghi</li>
             <li>• Still life</li>
@@ -44,11 +57,12 @@ export function ShootingPage() {
           initial={{ y: 50 }}
           whileInView={{ y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-blue-500 text-white p-8 md:p-12"
+          className="p-8 md:p-12"
+          style={{ backgroundColor: COLORS.primary }}
         >
-          <h2 className="text-3xl md:text-5xl font-black uppercase">EVENTI</h2>
-          <p className="mt-4 text-lg font-bold">Copertura eventi e reportage</p>
-          <ul className="mt-6 space-y-2 font-bold">
+          <h2 className="text-3xl md:text-5xl font-black uppercase" style={{ color: COLORS.secondary }}>EVENTI</h2>
+          <p className="mt-4 text-lg font-bold" style={{ color: COLORS.secondary }}>Copertura eventi e reportage</p>
+          <ul className="mt-6 space-y-2 font-bold" style={{ color: COLORS.secondary }}>
             <li>• Corporate</li>
             <li>• Concerti</li>
             <li>• Matrimoni</li>
@@ -58,8 +72,11 @@ export function ShootingPage() {
       </div>
 
       {/* EQUIPMENT */}
-      <div className="p-8 md:p-16 bg-yellow-300 border-t-4 border-black">
-        <h2 className="text-3xl md:text-5xl font-black uppercase mb-8">ATTREZZATURA</h2>
+      <div 
+        className="p-8 md:p-16 border-t-4"
+        style={{ backgroundColor: COLORS.secondary, borderColor: COLORS.primary }}
+      >
+        <h2 className="text-3xl md:text-5xl font-black uppercase mb-8" style={{ color: COLORS.primary }}>ATTREZZATURA</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { icon: '📷', label: 'Sony A7IV' },
@@ -73,18 +90,22 @@ export function ShootingPage() {
               whileInView={{ scale: 1 }}
               transition={{ delay: i * 0.1, type: 'spring' }}
               whileHover={{ scale: 1.1 }}
-              className="bg-white p-6 border-4 border-black text-center"
+              className="p-6 border-4 text-center"
+              style={{ backgroundColor: COLORS.primary, borderColor: COLORS.accent }}
             >
               <div className="text-4xl mb-2">{item.icon}</div>
-              <div className="font-black">{item.label}</div>
+              <div className="font-black" style={{ color: COLORS.secondary }}>{item.label}</div>
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* GALLERY PREVIEW */}
-      <div className="p-8 md:p-16 bg-gray-100">
-        <h2 className="text-3xl md:text-5xl font-black uppercase mb-8">GALLERY</h2>
+      <div 
+        className="p-8 md:p-16"
+        style={{ backgroundColor: `${COLORS.primary}10` }}
+      >
+        <h2 className="text-3xl md:text-5xl font-black uppercase mb-8" style={{ color: COLORS.primary }}>GALLERY</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {Array.from({ length: 6 }).map((_, i) => (
             <motion.div
@@ -93,7 +114,8 @@ export function ShootingPage() {
               whileInView={{ opacity: 1 }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ scale: 1.05 }}
-              className="aspect-[3/4] bg-gray-300 border-4 border-black"
+              className="aspect-[3/4] border-4 flex items-center justify-center"
+              style={{ backgroundColor: COLORS.primary, borderColor: COLORS.primary }}
             >
               <div className="w-full h-full flex items-center justify-center text-4xl">📸</div>
             </motion.div>

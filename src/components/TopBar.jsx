@@ -74,14 +74,14 @@ export function TopBar({
           </div>
           
           {/* Nuovo cerchio menu */}
-          <div className="relative">
+          <div className="relative flex items-center">
             <motion.button
               onClick={() => setMenuOpen(!menuOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               className={`
                 w-8 h-8 sm:w-9 sm:h-9 rounded-full border flex items-center justify-center
-                transition-all duration-300
+                transition-all duration-300 shrink-0
                 ${menuOpen
                   ? isLight
                     ? 'bg-black text-white border-black'
@@ -117,36 +117,33 @@ export function TopBar({
               </AnimatePresence>
             </motion.button>
 
-            {/* Pulsanti che escono dal cerchio - EQUIDISTANTI */}
+            {/* Menu dropdown con flexbox per spacing equidistante */}
             <AnimatePresence>
               {menuOpen && (
-                <>
+                <motion.div
+                  initial={{ opacity: 0, width: 0, x: -10 }}
+                  animate={{ opacity: 1, width: 'auto', x: 0 }}
+                  exit={{ opacity: 0, width: 0, x: -10 }}
+                  transition={{ 
+                    duration: 0.3,
+                    ease: [0.16, 1, 0.3, 1]
+                  }}
+                  className="flex items-center gap-3 overflow-hidden ml-3"
+                >
                   {navItems.map((item, index) => (
                     <motion.button
                       key={item.id}
-                      initial={{ 
-                        opacity: 0, 
-                        x: 0,
-                        scale: 0.5
-                      }}
-                      animate={{ 
-                        opacity: 1, 
-                        x: 100 + (index * 100),
-                        scale: 1
-                      }}
-                      exit={{ 
-                        opacity: 0, 
-                        x: 0,
-                        scale: 0.5
-                      }}
+                      initial={{ opacity: 0, scale: 0.8, y: -10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.8, y: -10 }}
                       transition={{ 
-                        duration: 0.4,
-                        delay: index * 0.08,
+                        duration: 0.25,
+                        delay: index * 0.05,
                         ease: [0.16, 1, 0.3, 1]
                       }}
                       onClick={() => handleNavClick(item.id)}
                       className={`
-                        absolute top-0 left-0 whitespace-nowrap
+                        whitespace-nowrap shrink-0
                         px-4 py-2 rounded-full border text-xs font-black uppercase tracking-wider
                         transition-colors duration-200
                         ${isLight
@@ -162,7 +159,7 @@ export function TopBar({
                       {item.label}
                     </motion.button>
                   ))}
-                </>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>

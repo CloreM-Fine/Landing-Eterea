@@ -8,7 +8,7 @@ export function Sidebar({ colors, onClose, onMaximize, onItemClick, onOpenMaps, 
       style={{ backgroundColor: colors.sidebarBg }}
     >
       {/* Traffic Lights in alto */}
-      <div className="flex items-center gap-2 px-4 py-3 h-[46px]">
+      <div className="flex items-center gap-2 px-4 py-3" style={{ height: '50px' }}>
         <button 
           onClick={onClose}
           className="traffic-light traffic-light-red hover:brightness-110 transition-all cursor-pointer"

@@ -3,7 +3,6 @@ export { ContattiPage } from './ContattiPage';
 export { ChiSiamoPage } from './ChiSiamoPage';
 export { AppPage } from './AppPage';
 export { GraficaPage } from './GraficaPage';
-export { Progettazione3DPage } from './Progettazione3DPage';
 export { ShootingPage } from './ShootingPage';
 export { SitiWebPage } from './SitiWebPage';
 export { SocialMediaPage } from './SocialMediaPage';

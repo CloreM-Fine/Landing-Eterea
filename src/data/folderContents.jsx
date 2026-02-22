@@ -509,7 +509,6 @@ export const folderContents = {
             { num: '01', title: 'Siti Web', desc: 'Design moderno, performance ottimali, esperienze utente memorabili.', img: IMAGES.web },
             { num: '02', title: 'App Mobile', desc: 'Sviluppo nativo iOS e Android con esperienze fluide.', img: IMAGES.app },
             { num: '03', title: 'Grafica & Brand', desc: 'Identità visiva completa, brand strategy, brand guidelines.', img: IMAGES.branding },
-            { num: '04', title: 'Progettazione 3D', desc: 'Modeling, rendering fotorealistico, animazioni 3D.', img: IMAGES.design },
             { num: '05', title: 'Shooting', desc: 'Fotografia professionale, video production, editing.', img: IMAGES.photo },
             { num: '06', title: 'Social Media', desc: 'Content strategy, content creation, community management.', img: IMAGES.social },
             { num: '07', title: 'Video', desc: 'Commercial, documentary, motion graphics.', img: IMAGES.video },
@@ -663,57 +662,6 @@ export const folderContents = {
     )
   },
 
-  'Progettazione 3D': {
-    title: '3D & MOTION',
-    url: 'etereastudio.com/3d',
-    content: (
-      <div className="bg-black text-white">
-        <section className="min-h-screen flex flex-col justify-center items-center relative">
-          <div className="absolute inset-0 opacity-30">
-            <img src={IMAGES.abstract3} alt="Background" className="w-full h-full object-cover grayscale" />
-          </div>
-          <motion.h1 initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-7xl md:text-9xl lg:text-[12rem] font-black uppercase text-center relative z-10">
-            3D
-          </motion.h1>
-        </section>
-
-        <section className="grid grid-cols-1 md:grid-cols-3 border-y-2 border-white">
-          {[
-            { title: 'Modeling', desc: 'Hard surface, organic, architectural.' },
-            { title: 'Rendering', desc: 'Fotorealismo per product visualization.' },
-            { title: 'Animation', desc: 'Motion graphics, character animation.' }
-          ].map((s, i) => (
-            <div key={s.title} className={`p-8 md:p-12 ${i < 2 ? 'border-r-2 border-white' : ''}`}>
-              <span className="text-4xl font-black text-gray-700">0{i + 1}</span>
-              <h2 className="text-xl md:text-3xl font-black uppercase mt-4 mb-4">{s.title}</h2>
-              <p className="text-sm text-gray-400">{s.desc}</p>
-            </div>
-          ))}
-        </section>
-
-        <section className="p-8 md:p-16">
-          <h2 className="text-2xl md:text-4xl font-black uppercase mb-8">Showcase</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: i * 0.05 }}
-                className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 flex items-center justify-center overflow-hidden group"
-              >
-                <img 
-                  src={[IMAGES.abstract1, IMAGES.abstract2, IMAGES.abstract3, IMAGES.texture, IMAGES.motion, IMAGES.design, IMAGES.workspace, IMAGES.creative][i]} 
-                  alt={`3D ${i}`}
-                  className="w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </section>
-      </div>
-    )
-  },
 
   'Shooting': {
     title: 'PHOTO & VIDEO',
