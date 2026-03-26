@@ -1,0 +1,13 @@
+# Netlify redirects
+# https://docs.netlify.com/routing/redirects/
+
+# Custom error pages
+/404 /404.html 200
+/500 /500.html 200
+
+# API redirects (if needed in future)
+# /api/*  https://api.example.com/:splat  200
+
+# SPA fallback - redirect all unmatched routes to index.html
+# This allows React Router to handle client-side routing
+/*    /index.html   200
