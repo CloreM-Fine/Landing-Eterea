@@ -31,16 +31,15 @@ jobs:
     - name: 🚀 Deploy to SiteGround via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: ${{ secrets.SITEGROUND_HOST }}
-        username: ${{ secrets.SITEGROUND_USERNAME }}
-        password: ${{ secrets.SITEGROUND_PASSWORD }}
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/
         server-dir: /public_html/
         exclude: |
           **/.git*
           **/.git*/**
           **/node_modules/**
-          **/src/**
         dangerous-clean-slate: false
         
     - name: ✅ Deployment completed
