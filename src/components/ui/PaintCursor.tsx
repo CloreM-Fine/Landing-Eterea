@@ -115,15 +115,15 @@ export function PaintCursor() {
         // Disegna forma organica tipo pennellata
         ctx.ellipse(0, 0, h, w, 0, 0, Math.PI * 2);
         
-        // Colore solido con opacity
+        // Colore solido brillante (più chiaro)
         ctx.fillStyle = point.color;
-        ctx.globalAlpha = point.life * 0.9;
+        ctx.globalAlpha = point.life; // Massima opacity
         ctx.fill();
         
-        // Aggiungi bordo netto
-        ctx.globalAlpha = point.life;
+        // Aggiungi bordo netto più sottile
+        ctx.globalAlpha = point.life * 0.8;
         ctx.strokeStyle = point.color;
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 1;
         ctx.stroke();
         
         ctx.restore();
