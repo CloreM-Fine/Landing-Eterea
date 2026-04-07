@@ -1,13 +1,32 @@
 import { useEffect, useRef, useState } from 'react';
 
+// Colori palette Eterea per la scia
+const etereaColors = [
+  '#A8D0E6', // blue
+  '#B5C7A6', // sage  
+  '#C5B9CD', // lilac
+  '#E8E4A0', // lemon
+  '#F4C2A1', // peach
+];
+
+interface TrailPoint {
+  x: number;
+  y: number;
+  angle: number;
+  color: string;
+  life: number;
+  width: number;
+  height: number;
+}
+
 export function PaintCursor() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const mouseRef = useRef({ x: 0, y: 0, prevX: 0, prevY: 0 });
-  const pointsRef = useRef<Array<{ x: number; y: number; size: number; life: number }>>([]);
+  const pointsRef = useRef<TrailPoint[]>([]);
+  const colorIndexRef = useRef(0);
 
   useEffect(() => {
-    // Check if mobile
     const checkMobile = () => {
       setIsMobile(window.matchMedia('(pointer: coarse)').matches);
     };
@@ -22,7 +41,6 @@ export function PaintCursor() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -30,57 +48,85 @@ export function PaintCursor() {
     resize();
     window.addEventListener('resize', resize);
 
-    // Track mouse movement
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current.prevX = mouseRef.current.x || e.clientX;
       mouseRef.current.prevY = mouseRef.current.y || e.clientY;
       mouseRef.current.x = e.clientX;
       mouseRef.current.y = e.clientY;
 
-      // Add points along the path for smoother trail
       const distance = Math.hypot(
         mouseRef.current.x - mouseRef.current.prevX,
         mouseRef.current.y - mouseRef.current.prevY
       );
-      const steps = Math.max(1, Math.floor(distance / 2)); // More points for smoother trail
+      
+      // Più punti per scia più fluida
+      const steps = Math.max(1, Math.floor(distance / 4));
 
       for (let i = 0; i < steps; i++) {
         const t = i / steps;
+        const x = mouseRef.current.prevX + (mouseRef.current.x - mouseRef.current.prevX) * t;
+        const y = mouseRef.current.prevY + (mouseRef.current.y - mouseRef.current.prevY) * t;
+        
+        const angle = Math.atan2(
+          mouseRef.current.y - mouseRef.current.prevY,
+          mouseRef.current.x - mouseRef.current.prevX
+        );
+
+        // Variazione dimensione per effetto pennellata
+        const variation = Math.sin(Date.now() * 0.01 + i) * 10;
+        
         pointsRef.current.push({
-          x: mouseRef.current.prevX + (mouseRef.current.x - mouseRef.current.prevX) * t,
-          y: mouseRef.current.prevY + (mouseRef.current.y - mouseRef.current.prevY) * t,
-          size: Math.random() * 20 + 50, // Random size between 50-70
+          x,
+          y,
+          angle,
+          color: etereaColors[colorIndexRef.current % etereaColors.length],
           life: 1,
+          width: 35 + variation, // larghezza variabile
+          height: 60 + variation * 0.5, // lunghezza
         });
+
+        if (i % 8 === 0) {
+          colorIndexRef.current++;
+        }
       }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Animation loop
     let animationId: number;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Update and draw points
+      // Disegna ogni punto come forma con contorno netto
       pointsRef.current = pointsRef.current.filter((point) => {
-        point.life -= 0.005; // Fade speed - slower for longer trail
+        point.life -= 0.006;
 
         if (point.life <= 0) return false;
 
-        // Draw soft circle
-        const gradient = ctx.createRadialGradient(
-          point.x, point.y, 0,
-          point.x, point.y, point.size * point.life
-        );
-        gradient.addColorStop(0, `rgba(255, 255, 255, ${point.life * 0.6})`);
-        gradient.addColorStop(0.3, `rgba(255, 255, 255, ${point.life * 0.3})`);
-        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
+        ctx.save();
+        ctx.translate(point.x, point.y);
+        ctx.rotate(point.angle);
+        
+        // Forma pennellata con contorni netti (no gradiente)
+        const w = point.width * point.life;
+        const h = point.height * point.life;
+        
         ctx.beginPath();
-        ctx.arc(point.x, point.y, point.size * point.life, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
+        // Disegna forma organica tipo pennellata
+        ctx.ellipse(0, 0, h, w, 0, 0, Math.PI * 2);
+        
+        // Colore solido con opacity
+        ctx.fillStyle = point.color;
+        ctx.globalAlpha = point.life * 0.9;
         ctx.fill();
+        
+        // Aggiungi bordo netto
+        ctx.globalAlpha = point.life;
+        ctx.strokeStyle = point.color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        ctx.restore();
 
         return true;
       });
@@ -102,10 +148,7 @@ export function PaintCursor() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-[9999]"
-      style={{
-        mixBlendMode: 'difference',
-      }}
+      className="fixed inset-0 pointer-events-none z-[9998]"
     />
   );
 }
