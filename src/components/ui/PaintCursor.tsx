@@ -42,14 +42,14 @@ export function PaintCursor() {
         mouseRef.current.x - mouseRef.current.prevX,
         mouseRef.current.y - mouseRef.current.prevY
       );
-      const steps = Math.max(1, Math.floor(distance / 5));
+      const steps = Math.max(1, Math.floor(distance / 2)); // More points for smoother trail
 
       for (let i = 0; i < steps; i++) {
         const t = i / steps;
         pointsRef.current.push({
           x: mouseRef.current.prevX + (mouseRef.current.x - mouseRef.current.prevX) * t,
           y: mouseRef.current.prevY + (mouseRef.current.y - mouseRef.current.prevY) * t,
-          size: Math.random() * 30 + 40, // Random size between 40-70
+          size: Math.random() * 20 + 50, // Random size between 50-70
           life: 1,
         });
       }
@@ -64,7 +64,7 @@ export function PaintCursor() {
 
       // Update and draw points
       pointsRef.current = pointsRef.current.filter((point) => {
-        point.life -= 0.02; // Fade speed
+        point.life -= 0.005; // Fade speed - slower for longer trail
 
         if (point.life <= 0) return false;
 
@@ -73,8 +73,8 @@ export function PaintCursor() {
           point.x, point.y, 0,
           point.x, point.y, point.size * point.life
         );
-        gradient.addColorStop(0, `rgba(255, 255, 255, ${point.life * 0.8})`);
-        gradient.addColorStop(0.5, `rgba(255, 255, 255, ${point.life * 0.4})`);
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${point.life * 0.6})`);
+        gradient.addColorStop(0.3, `rgba(255, 255, 255, ${point.life * 0.3})`);
         gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
         ctx.beginPath();
