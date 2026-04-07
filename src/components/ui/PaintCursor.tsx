@@ -99,7 +99,7 @@ export function PaintCursor() {
 
       // Disegna ogni punto come forma con contorno netto
       pointsRef.current = pointsRef.current.filter((point) => {
-        point.life -= 0.006;
+        point.life -= 0.015;
 
         if (point.life <= 0) return false;
 
