@@ -26,7 +26,7 @@ const apps = [
     description: 'Converti audio MP3/WAV/OGG, comprimi video MP4/WebM, ottimizza immagini. 100% offline nel tuo browser, nessun upload su server.',
     icon: FileAudio,
     color: '#C5B9CD',
-    url: 'https://app.etereastudio.it/apps/youtube',
+    url: 'https://app.etereastudio.it/apps/media',
     features: ['Audio, Video, Immagini', '100% offline', 'Nessun upload'],
   },
 ];
