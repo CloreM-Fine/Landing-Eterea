@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { QrCode, ImageDown, Download, ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
+import { QrCode, ImageDown, Music, ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
 
 const apps = [
   {
@@ -22,12 +22,12 @@ const apps = [
   },
   {
     id: 3,
-    title: 'Web Downloader',
-    description: 'Scarica immagini, video e contenuti da qualsiasi pagina web. Estrai risorse con un semplice click. Tool essenziale per designer e sviluppatori.',
-    icon: Download,
+    title: 'YouTube Downloader',
+    description: 'Scarica audio e video da YouTube in MP3/MP4. Analisi BPM integrata per le canzoni. Download singolo o multiplo in formato ZIP.',
+    icon: Music,
     color: '#C5B9CD',
-    url: 'https://app.etereastudio.it/downloader',
-    features: ['Immagini & video', 'Batch download', 'Formati multipli'],
+    url: 'https://app.etereastudio.it/apps/youtube',
+    features: ['MP3 & MP4', 'Analisi BPM', 'Download multiplo'],
   },
 ];
 
