@@ -4,6 +4,9 @@
  * Invia email a info@etereastudio.it e conferma al cliente
  */
 
+// Imposta fuso orario italiano (Roma)
+date_default_timezone_set('Europe/Rome');
+
 // Configurazione
 $toAdmin = 'info@etereastudio.it';
 $thankYouPage = '/thank-you';
