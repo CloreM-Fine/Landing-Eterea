@@ -73,27 +73,18 @@ export function Contact({ onOpenPrivacy }: ContactProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    // Lascia che il form faccia il submit normale al PHP
+    // Ma mostra il loading state per UX
     setIsSubmitting(true);
     
-    // Netlify Forms - invio automatico
-    const form = e.target as HTMLFormElement;
-    const formDataNetlify = new FormData(form);
+    // Il form si sottomette normalmente a /mail-handler.php
+    // e il PHP reindirizza a /thank-you o /error
     
-    try {
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formDataNetlify as any).toString()
-      });
-      
-      // Redirect alla pagina di ringraziamento
-      window.location.href = '/thank-you';
-    } catch (error) {
-      console.error('Errore invio form:', error);
-      setIsSubmitting(false);
-      alert('Si è verificato un errore. Riprova più tardi.');
-    }
+    // Non chiamare e.preventDefault() - lascia il submit normale
+    // setTimeout per dare tempo al browser di iniziare il submit
+    setTimeout(() => {
+      setIsSubmitting(true);
+    }, 0);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -305,6 +296,11 @@ export function Contact({ onOpenPrivacy }: ContactProps) {
                   onSubmit={handleSubmit} 
                   className="space-y-6 flex-1 flex flex-col"
                 >
+                  {/* Honeypot field - hidden from humans, visible to bots */}
+                  <div style={{ display: 'none' }} aria-hidden="true">
+                    <label>Non compilare questo campo</label>
+                    <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+                  </div>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-eterea-dark mb-2">
