@@ -16,7 +16,7 @@ import { ThankYou } from './components/pages/ThankYou';
 import { NotFound } from './components/pages/NotFound';
 import { ErrorPage } from './components/pages/ErrorPage';
 import { CookieBanner } from './components/ui/CookieBanner';
-import { PaintCursor } from './components/ui/PaintCursor';
+
 
 type LegalPage = 'privacy' | 'cookies' | 'terms' | 'service-conditions' | null;
 type CurrentPage = 'home' | 'thank-you' | 'not-found' | 'error';
@@ -126,8 +126,7 @@ function App() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Paint cursor effect */}
-          <PaintCursor />
+
           
           {currentPage === 'thank-you' ? (
             <ThankYou />
