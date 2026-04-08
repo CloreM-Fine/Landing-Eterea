@@ -17,7 +17,7 @@ const apps = [
     description: 'Converti JPG, PNG e GIF in formato WebP. Compressione ottimale per il web con qualità regolabile. Nessun upload su server, tutto nel tuo browser.',
     icon: ImageDown,
     color: '#B5C7A6',
-    url: 'https://app.etereastudio.it/webp',
+    url: 'https://app.etereastudio.it/apps/webp',
     features: ['Batch processing', 'Qualità regolabile', '100% locale'],
   },
   {
