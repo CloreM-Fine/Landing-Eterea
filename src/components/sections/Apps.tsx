@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { QrCode, ImageDown, Music, ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
+import { QrCode, ImageDown, FileAudio, ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
 
 const apps = [
   {
@@ -22,12 +22,12 @@ const apps = [
   },
   {
     id: 3,
-    title: 'YouTube Downloader',
-    description: 'Scarica audio e video da YouTube in MP3/MP4. Analisi BPM integrata per le canzoni. Download singolo o multiplo in formato ZIP.',
-    icon: Music,
+    title: 'Media Converter',
+    description: 'Converti audio MP3/WAV/OGG, comprimi video MP4/WebM, ottimizza immagini. 100% offline nel tuo browser, nessun upload su server.',
+    icon: FileAudio,
     color: '#C5B9CD',
     url: 'https://app.etereastudio.it/apps/youtube',
-    features: ['MP3 & MP4', 'Analisi BPM', 'Download multiplo'],
+    features: ['Audio, Video, Immagini', '100% offline', 'Nessun upload'],
   },
 ];
 
