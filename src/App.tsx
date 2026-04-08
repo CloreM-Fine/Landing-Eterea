@@ -86,9 +86,11 @@ function App() {
   const [activeLegalPage, setActiveLegalPage] = useState<LegalPage>(null);
   const [currentPage, setCurrentPage] = useState<CurrentPage>('home');
 
-  // Check URL for special pages
+  // Check URL for special pages and hash for legal modals
   useEffect(() => {
     const path = window.location.pathname;
+    const hash = window.location.hash;
+    
     if (path === '/thank-you') {
       setCurrentPage('thank-you');
     } else if (path === '/404') {
@@ -98,6 +100,25 @@ function App() {
     } else if (path !== '/' && !path.startsWith('/#')) {
       // Any other path shows 404
       setCurrentPage('not-found');
+    }
+    
+    // Check hash for legal pages (from external links like app.etereastudio.it)
+    if (hash) {
+      const hashValue = hash.replace('#', '');
+      switch (hashValue) {
+        case 'privacy-policy':
+          setActiveLegalPage('privacy');
+          break;
+        case 'cookie-policy':
+          setActiveLegalPage('cookies');
+          break;
+        case 'termini-servizio':
+          setActiveLegalPage('terms');
+          break;
+        case 'condizioni-app':
+          setActiveLegalPage('service-conditions');
+          break;
+      }
     }
   }, []);
 
