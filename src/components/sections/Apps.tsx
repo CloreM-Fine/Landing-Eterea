@@ -8,7 +8,7 @@ const apps = [
     description: 'Genera QR code personalizzati in pochi click. Supporta URL, testo, WiFi, contatti vCard e molto altro. Scarica in alta qualità per stampa o web.',
     icon: QrCode,
     color: '#A8D0E6',
-    url: 'https://app.etereastudio.it/qr',
+    url: 'https://app.etereastudio.it/apps/qrcode',
     features: ['URL, testo, WiFi', 'Personalizzazione colori', 'Download PNG/SVG'],
   },
   {
