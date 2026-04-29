@@ -5,7 +5,7 @@ import { Footer } from './components/layout/Footer';
 import { Hero } from './components/sections/Hero';
 import { Services } from './components/sections/Services';
 import { Works } from './components/sections/Works';
-// import { Apps } from './components/sections/Apps'; // Temporaneamente disabilitato
+// import { Apps } from './components/sections/Apps';
 import { About } from './components/sections/About';
 import { Contact } from './components/sections/Contact';
 import { FAQ } from './components/sections/FAQ';
@@ -170,7 +170,7 @@ function App() {
                 <Hero />
                 <Services />
                 <Works />
-                {/* <Apps /> */} // Sezione "Le nostre app" temporaneamente disabilitata
+                {/* <Apps /> */}
                 <About />
                 <FAQ />
                 <Contact onOpenPrivacy={() => setActiveLegalPage('privacy')} />
